@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/admin/binary_trees/practice",
-      "program": "c:/Users/admin/binary_trees/practice/build/Debug/outDebug",
+      "cwd": "c:/Users/admin/binary_trees",
+      "program": "c:/Users/admin/binary_trees/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
