@@ -1,4 +1,5 @@
 #include"binary_trees.h"
+
 /**
  * binary_tree_preorder - print elements of tree using pre-order traversal
  * @tree: tree to go through
@@ -14,4 +15,6 @@ else{
   binary_tree_preorder(tree->left,func);
   binary_tree_preorder(tree->right,func);
 }
+
 }
+
