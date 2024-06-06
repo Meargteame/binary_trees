@@ -1,29 +1,46 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "binary_trees.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * binary_tree_height_b - Measures height of a binary tree for a bal tree
+ * @tree: tree to go through
+ * Return: the height
  */
-int main(void)
+
+size_t binary_tree_height_b(const binary_tree_t *tree)
 {
-    binary_tree_t *root;
-    size_t leaves;
+	size_t l = 0;
+	size_t r = 0;
 
-    root = binary_tree_node(NULL, 98);
-    root->left = binary_tree_node(root, 12);
-    root->right = binary_tree_node(root, 402);
-    binary_tree_insert_right(root->left, 54);
-    binary_tree_insert_right(root, 128);
-    binary_tree_print(root);
+	if (tree == NULL)
+	{
+		return (0);
+	}
+	else
+	{
+		if (tree)
+		{
+			l = tree->left ? 1 + binary_tree_height_b(tree->left) : 1;
+			r = tree->right ? 1 + binary_tree_height_b(tree->right) : 1;
+		}
+		return ((l > r) ? l : r);
+	}
+}
 
-    leaves = binary_tree_leaves(root);
-    printf("Leaves in %d: %lu\n", root->n, leaves);
-    leaves = binary_tree_leaves(root->right);
-    printf("Leaves in %d: %lu\n", root->right->n, leaves);
-    leaves = binary_tree_leaves(root->left->right);
-    printf("Leaves in %d: %lu\n", root->left->right->n, leaves);
-    return (0);
+/**
+ * binary_tree_balance - Measures balance factor of a binary tree
+ * @tree: tree to go through
+ * Return: balanced factor
+ */
+
+int binary_tree_balance(const binary_tree_t *tree)
+{
+	int right = 0, left = 0, total = 0;
+
+	if (tree)
+	{
+		left = ((int)binary_tree_height_b(tree->left));
+		right = ((int)binary_tree_height_b(tree->right));
+		total = left - right;
+	}
+	return (total);
 }
